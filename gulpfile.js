@@ -16,6 +16,11 @@ gulp.task('sass', function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task('copyimg', function () {
+    return gulp
+        .src('src/img/*')
+        .pipe(gulp.dest('./public/img'));
+});
 
 gulp.task('server',['sass'], function () {
     browserSync.init({
@@ -30,4 +35,4 @@ gulp.task('server',['sass'], function () {
 
 });
 
-gulp.task('default', ['server']);
+gulp.task('default', ['server','copyimg']);
